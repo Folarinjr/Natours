@@ -1,0 +1,127 @@
+/**BUTTONS**/
+.btn {
+    &,
+    &:link,
+    &:visited {
+    position: relative;
+    padding: 1.8rem 4rem;
+    border-radius: 10rem;
+    font-size: $default-font;
+    display: inline-block;
+    @include buttons();
+    transition: all .2s; /*THE SECOND EXAMPLE OF ANIMATION*/
+    //real buttons
+    border: none;
+    cursor: pointer;
+
+    }
+
+    &:hover {
+    box-shadow: 0 .2rem 2rem rgba(0, 0, 0, .2); /*X-AXIS  Y-AXIS  BLUR  COLOR*/
+    transform: translateY(-.3rem);
+    }
+    &:active {
+        outline: none;
+        
+    box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .2); /*X-AXIS  Y-AXIS  BLUR  COLOR*/
+    transform: translateY(.3rem);
+    }
+
+    &--white {
+    background-color: $color-white;
+    color: $color-gray;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    }
+    
+    &--green {
+        background-color: $primary-color-dark;
+        color: $color-white;
+    }
+
+    //USING PSEUDO CLASSES
+    &::after {
+    content: '';
+    display: inline-block; /*THIS SHOULD BE THE SAME WITH THE DISPLAY OF BTN*/
+    width: 100%;
+    height: 100%;
+    border-radius: 6.25rem;
+    /**TO POSITION IT RIGHT BEHINDE THE BTN*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /**THIS MAKES THE TEXT ON BTN VISIBLE*/
+    transition: all .5s;
+
+    @include respond(tab-size) {
+        display: none;
+    }
+
+    @include respond(phone) {
+        display: none;
+    }
+    
+    }
+
+    &--white::after {
+    background-color: $color-white;
+    }
+    &--green::after {
+    background-color: $primary-color-light;
+    }
+//WHEN DO WE WANT TO SEE THE AFTER BTN
+    &:hover::after {
+    /*transform: scale(1.4);*/  /*THIS SCALES IT ON BOTH THE X AND Y AXIS*/
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; /*THIS FADE IT OUT*/
+
+    @include respond(tab-size) {
+        transform: scaleX(0) scaleY(0);
+    }
+    }
+
+    &--animated {
+    -webkit-animation: moveInBottom .2s ease-out .4s;
+            animation: moveInBottom .5s ease-out .7s;
+            /**TO MAKE IT INVISIBLE ON START*/
+            -webkit-animation-fill-mode: backwards;
+                    animation-fill-mode: backwards;
+    }
+
+    
+}
+
+.btn-text:link,
+.btn-text:visited {
+    font-size: 1.6rem;
+    display: inline-block;
+    text-decoration: none;
+    padding: .3rem;
+    color: $primary-color-light;
+    border-bottom: .1rem solid $primary-color-light;
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        background-color: $primary-color-light;
+        color: #fff;
+    }
+
+    @include respond(phone) {
+        background-color: $primary-color-light;
+        color: #fff;
+    }
+}
+
+.btn-text:hover {
+    transform: translateY(-.2rem);
+    border: .1rem solid $primary-color-light;
+    color: #fff;
+    background-color: $primary-color-light;
+    box-shadow: 0 2rem 2rem rgba(black, 0.15);
+}
+
+.btn-text:active {
+    box-shadow: 0 .5rem 1rem rgba(black, 0.15);
+    transform: translateY(0);
+}
+

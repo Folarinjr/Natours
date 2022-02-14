@@ -1,0 +1,31 @@
+//ROOT RESET
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /**Always use 10px for easy conversion**/
+
+    @include respond(tab-land) {
+        font-size: 50%; //1rem is 8px
+    }
+
+    @include respond(tab-port) {
+        font-size: 50%  //1rem is 6px
+    }
+
+    @include respond(phone) {
+        font-size: 37.5%
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}

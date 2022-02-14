@@ -1,0 +1,54 @@
+//HEADER
+.header {
+    position: relative;
+    height: 80vh;
+    background-image: linear-gradient(to bottom right, $primary-color-light, $primary-color-dark),
+                                        url(../img/hero-small.jpg);
+    background-size: cover;
+    background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+            /*clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);*//*TO MAKE A TRIANGLE**/
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 56.25em),only screen and (min-resolution: 192dpi) and (min-width: 56.25em),(min-width: 37.5em),(-webkit-min-device-pixel-ratio:2) and (min-width: 56.25em) {
+                    background-image: radial-gradient(rgba($secondary-color-light, .5), rgba($secondary-color-dark, .5)),
+                                        url(../img/hero.jpg);
+                }
+
+    
+    @include respond(tab-port) {
+        height: 80vh;
+        -webkit-clip-path: polygon(0 0, 100% 50%, 100% 85%, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);  
+    }
+    @include respond(phone) {
+        height: 60vh;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+            &__logo-box {
+                position: absolute;
+                top: 2.5rem;
+                left: 2.5rem;
+            }
+
+            &__logo {
+                height: 3rem;
+            }
+            
+            /*
+            .logo:hover {
+                -webkit-animation: moveInRight 1s ease-out;
+                        animation: moveInRight 1s ease-out;
+            }
+            */
+            
+            &__text-box {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+    
+}
